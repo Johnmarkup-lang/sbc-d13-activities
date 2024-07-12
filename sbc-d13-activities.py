@@ -1,4 +1,27 @@
-#word
+#custom tokenization
+def custom_tokenization(text):
+    tokens = []
+    current_token = ""
+
+    schar = ",.!?;:'\"()-"
+
+    for char in text:
+        if char not in schar():
+            current_token += char
+        else:
+            if current_token:
+                tokens.append(current_token)
+                current_token = ""
+    if current_token:
+        tokens.append(current_token)
+
+    return tokens
+
+text = input("input text: ")
+output_tokens = custom_tokenization(text)
+print(output_tokens)
+
+#word tokenization
 text = input("Enter your sentence frfr: ")
 str = []
 current_str = ""
@@ -38,7 +61,7 @@ tokenized_sentence = tokenize_sentence(user_sentence)
 print(tokenized_sentence)
 
 
-#character
+#character tokenization
 def tokenize_characters(sentence):
     tokens = [char for char in sentence]
     return tokens
@@ -48,7 +71,7 @@ user_sentence = input("Enter a sentence for character tokenization: ")
 tokenized_characters = tokenize_characters(user_sentence)
 print(tokenized_characters)
 
-#character v2
+#character v2 tokenization
 sen = input("Enter your word/anything: ")
 list = []
 for x in sen:
